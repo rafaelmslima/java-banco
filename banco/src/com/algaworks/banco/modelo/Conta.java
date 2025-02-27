@@ -2,8 +2,14 @@ package com.algaworks.banco.modelo;
 
 import java.util.Objects;
 
-public class Conta {
+public abstract class Conta {
+    /*
+    Uma classe abstrata é usada para criar apenas algo que será uma abstração, ou seja, algo que não pode ser instanciado mas que existe como um
+    superTipo, dizendo como as classes derivadas dela devem se comportar na forma base.
 
+    Podemos criar métodos abstratos também, mas um metodo abstrado nao pode ter codigo nele. Quando fazemos isso, as classes que herdam da classe mãe
+    devem obrigatoriamente implementar um código para esse método abstrato.
+     */
     private Pessoa titular;
     private int agencia;
     private int numero;
@@ -25,6 +31,7 @@ public class Conta {
             throw new IllegalArgumentException("Valor deve ser maior que 0");
         }
         saldo = saldo + valor;
+        System.out.println("Valor do saldo agora é " + saldo);
     }
 
     public void sacar(double valor) {
@@ -41,6 +48,8 @@ public class Conta {
     public void sacar(double valor, double taxaSaque) {
         sacar(valor + taxaSaque);
     }
+
+    public abstract void debitarTarifaMensal();
 
     public Pessoa getTitular() {
         return titular;

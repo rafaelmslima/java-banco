@@ -10,6 +10,13 @@ public class ContaEspecial extends Conta {
     }
 
     @Override
+    public void debitarTarifaMensal() {
+        if (getSaldo() <= 10_000) {
+            sacar(30);
+        }
+    }
+
+    @Override
     public double getSaldoDisponivel() {
         return getSaldo() + getValorLimite();
     }
